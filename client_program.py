@@ -1,6 +1,5 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from pprint import pprint
 
 ############################# Appel de la base donnee ############################# 
 
@@ -10,10 +9,6 @@ db = client.vls
 print("\n")
 latA = float(input("Veuillez entrer votre latitude: "))
 longA = float(input("Veuillez entrer votre longitude: "))
-# latA = 50.637171
-# longA = 3.071121
-
-#50.629169407729556, 3.0607334524204095
 
 ############################# Creation des variables pour faciliter l'utilisation de la base de donnée ############################# 
 
