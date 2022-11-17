@@ -6,11 +6,11 @@ from pymongo.mongo_client import MongoClient
 
 client = MongoClient("mongodb+srv://Saliou:imwcVjBAhIZvwV9n@cluster0.e2aqyh7.mongodb.net/test", server_api=ServerApi('1'))
 db = client.vls
-def deactivate_zone(lat, lon, dist):
+def zone_desactivation(lat, lon, dist):
     """
-    deactivate all stations in a select area
+    désactivation de stations dans une zone
     """
-    # filtre nearby dans global
+    # filtre nearby dans stations
     found= db.stations.find({"geometry": 
                                    {"$near": 
                                     {"$geometry":
@@ -24,4 +24,4 @@ def deactivate_zone(lat, lon, dist):
         desac=db.stations.update_one({"_id":i["_id"]}, {"$set": {"Available": "False"}},
                                   upsert = True)
     
-deactivate_zone(3.071121,50.637171,10000)
+zone_desactivation(3.071121,50.637171,10000)
