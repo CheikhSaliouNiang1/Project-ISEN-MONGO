@@ -6,14 +6,14 @@ from pymongo.mongo_client import MongoClient
 client = MongoClient("mongodb+srv://Saliou:imwcVjBAhIZvwV9n@cluster0.e2aqyh7.mongodb.net/test", server_api=ServerApi('1'))
 db = client.vls
 
-def search(station):
+def recherche(station):
     """
-    search for a station by name with only some letters or part of the name
+    Trouver une station par son nom ou juste par quelques lettres grace aux expression régulière
     """
     
-    cur = db.stations.find({"name": {"$regex":station}})
+    found = db.stations.find({"name": {"$regex":station}})
     liste_nom=[]
-    for doc in cur:
-        liste_nom.append(doc)
+    for i in found:
+        liste_nom.append(i)
     print(liste_nom)
-search("Bu")
+recherche("Bu")
